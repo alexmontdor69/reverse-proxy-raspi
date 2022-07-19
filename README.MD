@@ -24,20 +24,25 @@ The system will be a docker network that will include:
 
 The proposed configuration will always use ssl and will be set up as such.
 
-# How to
+# How to ...
 # Install the reverse-proxy
 1. Download this repo in your raspi
+
 `git clone ... `
 2. Create a docker network
+
 `sudo docker network create`
 3. Add your self-signed ssl certs
-Here i used the digital ocean approach.
-`cd certs`
-`sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./nginx-selfsigned.key -out ./nginx-selfsigned.crt`
-`cd ..`
-`sudo openssl dhparam -out ./dhparam.pem 4096`
 
-`sudo cp `
+Here i used the digital ocean approach.
+
+```cd certs
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./nginx-selfsigned.key -out ./nginx-selfsigned.crt
+cd ..
+sudo openssl dhparam -out ./dhparam.pem 4096
+
+sudo cp
+```
 
 
 3. Create the local reverse-proxy
