@@ -10,24 +10,24 @@ services:
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: PASSWORD
-    container_name: wordpress_db_hh
+    container_name: ${VIRTUAL_HOST}_db
 
   wordpress:
     depends_on:
       - hh_db
     image: wordpress:latest
     ports:
-      - 127.0.0.1:668:80
+      - "127.0.0.1:${VIRTUAL_APP_PORT}:${VIRTUAL_PORT}"
     restart: always
     environment:
-      VIRTUAL_HOST: services.home
-      VIRTUAL_PORT: 80
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
+      VIRTUAL_PORT: ${PORT}
       NETWORK_ACCESS: internal
       WORDPRESS_DB_HOST: hh_db
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: PASSWORD
       WORDPRESS_DB_NAME: wordpress
-    container_name: wordpress_hh
+    container_name: ${VIRTUAL_HOST}
 
 volumes:
   db_data:
