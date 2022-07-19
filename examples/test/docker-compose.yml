@@ -1,0 +1,17 @@
+version: '3.8'
+# Test to see if everything is working
+services:
+  web:
+    container_name: webDemo
+    restart: unless-stopped
+    image: nginxdemos/hello
+    ports:
+      - "127.0.0.1:667:80"
+    environment:
+      VIRTUAL_HOST: { $VIRTUAL_HOST }
+      VIRTUAL_PORT: { $VIRTUAL_PORT }
+
+networks:
+  default:
+    external:
+      name: reverse-proxy-network
