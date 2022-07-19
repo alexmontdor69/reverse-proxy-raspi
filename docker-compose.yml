@@ -10,7 +10,8 @@ services:
       volumes:
          - /var/run/docker.sock:/tmp/docker.sock:rw
          - nginx:/etc/nginx/conf.d
-         - certs:/etc/nginx/certs
+         - shared/certs:/etc/nginx/certs
+         - shared/snippets:/etc/nginx/snippets
       container_name: local-reverse-proxy
       labels:
          - home.nginx_proxy=true
