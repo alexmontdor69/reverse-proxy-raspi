@@ -13,13 +13,11 @@ services:
          - ./shared/certs:/etc/ssl/certs
          - ./shared/snippets:/etc/nginx/snippets
       container_name: local-reverse-proxy
-      labels:
-         - home.nginx_proxy=true
 
    docker-gen:
       image: nginxproxy/docker-gen
       container_name: nginx-gen
-      command: -notify "docker-label-sighup home.nginx_proxy" -only-published -watch -wait 10s:30s /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf
+      command: -notify-sighup -only-published -watch -wait 10s:30s /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf
       #   -t nginxproxy/docker-gen -notify-sighup nginx -watch -only-exposed /etc/docexposedker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf
       restart: always
       #command:[-t nginxproxy/docker-gen -notify-sighup nginx -watch -only-exposed /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf]

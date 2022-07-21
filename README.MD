@@ -79,8 +79,8 @@ Basically for each published container, nginx-gen will create a:
 * server 443 section to redirect to a published container
 
 # To-do
-- [ ] Complete the README
-- [ ] Test Jeedom and external port
+- [ ] correct Issues on reloading nginx
+- [50%] Test Jeedom and external port
 - [ ] Save the db external environment (google drive ?)
 
 # References
